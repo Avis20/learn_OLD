@@ -4,10 +4,16 @@ use uni::perl qw|:dumper|;
 sub binary_search {
     my ( $array, $length, $item ) = @_;
     my ( $left, $right ) = ( 0, $length );
+    my $c = 0;
     while ( $left <= $right ){
+        $c++;
+        warn "Iter = $c; left = $left; right = $right\n" if $ENV{DEBUG};
         my $middle = int ( ($right + $left) / 2 );
+        warn "middle = $middle\n" if $ENV{DEBUG};
         return $middle if $array->[$middle] == $item;
         $array->[$middle] > $item ? $right = $middle : $left = $middle++;
+        warn "arr el = $array->[$middle] > item = $item\n" if $ENV{DEBUG};
+        warn "\n\n" if $ENV{DEBUG};
     }
     return 'not found';
 }
