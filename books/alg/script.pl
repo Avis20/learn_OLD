@@ -8,13 +8,14 @@ use Test::More;
 
 use MySearch;
 
-my ( $shuffle, $check, $size ) = (0, 1, 999999);
+my ( $shuffle, $check, $size ) = (0, 1, 99);
 
 my @array = $shuffle ? shuffle (0..$size) : (0..$size);
 my $length = scalar(@array);
 
-my $item = int rand @array;
-my $index = MySearch::binary_search( \@array, $length, $item );
+# my $item = int rand @array;
+my $item = 85;
+my $index = MySearch::recursive_binary_search( \@array, 0, $length, $item );
 warn "item = $item; index = $index; check = $array[$index]" if $check;
 ok( $item == $array[$index] ) if $check;
 

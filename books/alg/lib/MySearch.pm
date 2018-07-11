@@ -1,6 +1,22 @@
 package MySearch;
 use uni::perl qw|:dumper|;
 
+sub recursive_binary_search {
+    my ($array, $left, $right, $item) = @_;
+    return 'not found' if ( $left > $right );
+    warn "left = $left; right = $right\n" if $ENV{DEBUG};
+    my $middle = int ( ( $left + $right ) / 2 );
+    warn "middle = $middle\n" if $ENV{DEBUG};
+    warn "arr el = $array->[$middle] > item = $item\n" if $ENV{DEBUG};
+    warn "\n\n" if $ENV{DEBUG};
+    return $middle if ( $array->[$middle] == $item );
+    if ($array->[$middle] > $item){
+        recursive_binary_search($array, $left, $middle, $item);
+    } else {
+        recursive_binary_search($array, $middle, $right, $item);
+    }
+}
+
 sub binary_search {
     my ( $array, $length, $item ) = @_;
     my ( $left, $right ) = ( 0, $length );
