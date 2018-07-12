@@ -7,6 +7,7 @@ use Benchmark;
 use Test::More;
 
 use MySearch;
+use MySort;
 
 my ( $shuffle, $check, $size ) = (0, 0, 999999);
 
