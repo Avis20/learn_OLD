@@ -9,10 +9,47 @@ use Test::More;
 use MySearch;
 use MySort;
 
-my ( $shuffle, $check, $size ) = (0, 0, 999999);
+my ( $check, $size) = ( 1, 9999 );
+my @origin_array = (0..$size);
+my $length = scalar(@origin_array);
 
-my @array = $shuffle ? shuffle (0..$size) : (0..$size);
-my $length = scalar(@array);
+timethese(0, {
+    'insertion' =>  sub {
+        my @shuffle_array = shuffle @origin_array;
+        my @sort_array = MySort::insertion_sort(\@shuffle_array, $length);
+        check_sort(\@sort_array, \@origin_array) if $check;
+    },
+    'selection' =>  sub {
+        my @shuffle_array = shuffle @origin_array;
+        my @sort_array = MySort::selection_sort(\@shuffle_array, $length);
+        check_sort(\@sort_array, \@origin_array) if $check;
+    },
+    'origin' => sub {
+        my @shuffle_array = shuffle @origin_array;
+        my @sort_array = sort { $a <=> $b } @shuffle_array;
+        check_sort(\@sort_array, \@origin_array);
+    }
+});
+
+sub check_sort {
+    my ( $origin_array, $sort_array ) = @_;
+
+    foreach my $i ( 0..$length - 1 ){
+        die "Array is different! origin_array = $origin_array->[$i]; sort_array = $sort_array->[$i]; "
+          if ( $origin_array->[$i] != $sort_array->[$i] );
+    }
+}
+
+=head
+
+my ( $shuffle, $check, $size ) = (0, 0, 999);
+
+my @origin_array = (0..$size);
+my @shuffle_array = shuffle @origin_array;
+
+my $length = scalar(@shuffle_array);
+
+my @sort_array = MySort::selection_sort(\@shuffle_array, $length);
 
 timethese(0, {
     'binary' => sub {

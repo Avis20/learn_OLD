@@ -9,11 +9,21 @@ use Test::More;
 use MySearch;
 use MySort;
 
-my @arr = (12, 9, 3, 7, 14, 11);
-my $length = scalar(@arr);
-my $sort_arr = MySort::selection_sort(\@arr, $length);
-warn dumper $sort_arr;
-warn dumper [sort { $a > $b } @arr];
+my $check = 1;
+my @origin_array = (0..999);
+my @shuffle_array = shuffle @origin_array;
+
+my $length = scalar(@shuffle_array);
+my @sort_array = MySort::insertion_sort(\@shuffle_array, $length);
+
+if ( $check ){
+    foreach my $i ( 0..$length - 1 ){
+        die "Array is different! origin_array = $origin_array[$i]; != $sort_array[$i]" if ( $origin_array[$i] != $sort_array[$i] );
+    }
+}
+
+
+# warn dumper \@is_diff;
 
 =head
 
