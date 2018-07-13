@@ -6,8 +6,6 @@ use JSON::XS        qw| decode_json encode_json |;
 
 use LWP::UserAgent;
 use HTTP::Request;
-use WWW::Curl::Easy;
-use WWW::Curl::Form;
 
 my $config = {
     'host' => 'api.telegram.org',
