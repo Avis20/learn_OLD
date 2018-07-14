@@ -3,6 +3,14 @@ use uni::perl qw|:dumper|;
 
 my $DEBUG = 0;
 
+my $call = 0;
+
+sub merge_sort {
+    my ( $array, $left, $right ) = @_;
+    warn "Call = " . ++$call . "; array = @{$array}\n";
+    warn "left = $left, right = $right\n"
+}
+
 sub insertion_sort {
     my ( $array, $length ) = @_;
     for (my $i = 1; $i < $length; $i++) {

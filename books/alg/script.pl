@@ -9,6 +9,13 @@ use Test::More;
 use MySearch;
 use MySort;
 
+my @origin_array = (12, 9, 3, 7, 14, 11);
+my @shuffle_array = @origin_array; # shuffle @origin_array;
+
+my $length = scalar(@shuffle_array);
+my @sort_array = MySort::merge_sort(\@shuffle_array, 0, $length - 1);
+
+=head
 my $check = 1;
 my @origin_array = (0..999);
 my @shuffle_array = shuffle @origin_array;
@@ -40,3 +47,6 @@ ok( $item == $array[$index] ) if $check;
 done_testing() if $check;
 
 exit;
+
+
+
