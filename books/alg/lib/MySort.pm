@@ -1,14 +1,21 @@
 package MySort;
 use uni::perl qw|:dumper|;
 
-my $DEBUG = 0;
+my $DEBUG = 1;
 
 my $call = 0;
 
 sub merge_sort {
     my ( $array, $left, $right ) = @_;
-    warn "Call = " . ++$call . "; array = @{$array}\n";
-    warn "left = $left, right = $right\n"
+    warn "Call = " . ++$call . "; array = @{$array}\n" if $DEBUG;
+    warn "left = $left, right = $right\n" if $DEBUG;
+    return if $left > $right;
+
+    my $middle = int ( ($right + $left) / 2 );
+    warn "middle = $middle\n" if $DEBUG;
+
+    merge_sort( $array, $left, $middle );
+    merge_sort( $array, $middle + 1, $right );
 }
 
 sub insertion_sort {
