@@ -10,9 +10,11 @@ int main (){
     upper = 300;    // верняя граница температур
     step = 20;      // величина шага
 
+    printf("%s  %s\n", "Фаренгейт", "Цельсию");
+
     while ( fahr <= upper ){
         celsius = (5.0/9.0) * (fahr - 32.0); // c = (5/9)(f - 32)
-        printf("%3.0f %6.2f\n", fahr, celsius);
+        printf("%9.0f %6.2f\n", fahr, celsius);
         fahr = fahr + step;
     }
 
