@@ -9,6 +9,7 @@ test();
 
 sub test {
     print 1;
+    die;
 }
 
 exit;
