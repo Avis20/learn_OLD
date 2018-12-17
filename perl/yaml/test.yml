@@ -1,0 +1,106 @@
+
+# Комментарий
+# -
+#   - Apples
+#   - Orange
+#   - Banana
+#   - Mango
+
+# user:
+#   first_name: vasya
+#   last_name: pupkin
+#   age: 29
+
+# - user1:
+#     name: vasya
+#     age: 12
+#     skils:
+#       - perl
+#       - python
+#       - javascript
+
+# - user2:
+#     name: petya
+#     age: 15
+#     skils: 
+#       - java
+#       - c++
+#       - assembler
+
+# -  martin:
+#     name: Martin D'vloper
+#     job: Developer
+#     skills:
+#       - python
+#       - perl
+#       - pascal
+# -  tabitha:
+#     name: Tabitha Bitumen
+#     job: Developer
+#     skills:
+#       - lisp
+#       - fortran
+#       - erlang
+
+# user1: { name: vasya;, age: 12, skils: [ perl, python, javascript] }
+# user2: { name: petya, age: 15, skils: [ java, c++, assembler ] }
+
+# test1:
+#   ok: true
+#   success: 1
+
+# test2:
+#   ok: false
+#   success: 0
+
+# lorem: |
+#   Lorem ipsum dolor sit amet,
+#   consectetur adipisicing elit.
+#   Accusantium, molestias!
+
+# one-line-text: >
+#   one
+#   line
+#   text
+
+# commands:
+#     - do something with --a long --list of --parameters 
+#     - do something
+#       with 
+#       --a long 
+#       --list of 
+#       --parameters 
+
+# inheritance:
+#     _basic: &basic
+#         cpu:  2
+#         ram:  2
+#         disk: 10
+#         os: rhel6 
+
+#     vm-profiles:
+#         small: {<<: *basic,  cpu: 1}
+#         large: {<<: *basic,  cpu: 4}
+
+# references:
+#     value1: &reference "Don't repeat yourself!"
+#     value2: *reference 
+
+# test: 1
+
+# ---
+
+# test2: 2
+
+# ---
+
+# test3: 3
+
+---
+- just a string
+-
+  a: 1
+  b: 2
+-
+  - a
+  - b
