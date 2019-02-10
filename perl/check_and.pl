@@ -2,7 +2,7 @@
 
 use uni::perl       qw| :dumper |;
 
-my $test = 0;
+my $test = 1;
 if ( 1 && $test++ ){
     warn "if ok";
 }
