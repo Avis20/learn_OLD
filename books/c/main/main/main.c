@@ -1,33 +1,29 @@
 #include <stdio.h>
 
-void ref();  // 5.1. Указатели и адреса
-void swap(int *px, int *py);
+void swap1(int a, int b);
+void swap2(int *px, int *py);
 
 int main(){
 
-    int a = 2, b = 5;
-    swap(&a, &b);
-    printf("a = %d; b = %d", a, b);
-//    ref();
+    int a = 1, b = 2;
+    swap1(a, b);
+    printf("a = %d; b = %d\n", a, b);
 
+    swap2(&a, &b);
+    printf("a = %d; b = %d\n", a, b);
     return 0;
 }
 
-void ref(){
-    int x = 1, y = 2, z[10];
-    int *ip;
-
-    ip = &x;    // ip ссылаеться на x
-    y = *ip;    // y = 1
-    *ip = 0;    // x = 0
-    ip = z;     // ip ссылается на 1-й эл. массива
-    *ip = 1;
-    ++*ip;      // z[0] = 2
-}
-
-void swap(int *px, int *py){
+void swap1(int a, int b){
     int tmp;
 
+    tmp = a;
+    a = b;
+    b = tmp;
+}
+
+void swap2(int *px, int *py){
+    int tmp;
     tmp = *px;
     *px = *py;
     *py = tmp;
