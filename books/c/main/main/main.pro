@@ -9,8 +9,10 @@ TEMPLATE = app
 
 SOURCES += \
     main.c \
-    ref.c
+    chapter5.c \
+    chapter1.c
 
 HEADERS += \
-    ref.h
+    chapter5.h \
+    chapter1.h
 

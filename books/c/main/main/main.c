@@ -1,30 +1,41 @@
 #include <stdio.h>
-
-void swap1(int a, int b);
-void swap2(int *px, int *py);
+#include <stdlib.h>
+#include "chapter5.h"
 
 int main(){
 
-    int a = 1, b = 2;
-    swap1(a, b);
-    printf("a = %d; b = %d\n", a, b);
+    printf("%s\n", month_name(12));
 
-    swap2(&a, &b);
-    printf("a = %d; b = %d\n", a, b);
     return 0;
 }
 
-void swap1(int a, int b){
-    int tmp;
+/* вычисление дат: пример многомерного массива
+int main(){
 
-    tmp = a;
-    a = b;
-    b = tmp;
-}
+    int year = 2019, month = 5, day = 1;
+    int count_days = day_of_year(year, month, day);
+    printf("%d\n", count_days);
 
-void swap2(int *px, int *py){
-    int tmp;
-    tmp = *px;
-    *px = *py;
-    *py = tmp;
+    int res_month, res_day;
+    month_day(1988, 61, &res_month, &res_day);
+    printf("month = %d; day = %d", res_month, res_day);
+
+    return 0;
 }
+*/
+
+/* Сортировка строк
+char *lines[MAXLINES];
+int main(){
+
+    int count_lines;
+
+    if ((count_lines = read_lines(lines, MAXLINES)) >= 0 ){
+        // НЕ РАБОТАЕТ СОРТИРОВКА: ошибка сегментации
+//        qsort_lines(lines, 0, count_lines-1);
+        write_lines(lines, count_lines);
+    }
+
+    return 0;
+}
+*/

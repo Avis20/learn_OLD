@@ -49,9 +49,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../main/main.c \
-		../main/ref.c 
+		../main/chapter5.c \
+		../main/chapter1.c 
 OBJECTS       = main.o \
-		ref.o
+		chapter5.o \
+		chapter1.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -106,8 +108,10 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../main/main.pro ../main/ref.h ../main/main.c \
-		../main/ref.c
+		../main/main.pro ../main/chapter5.h \
+		../main/chapter1.h ../main/main.c \
+		../main/chapter5.c \
+		../main/chapter1.c
 QMAKE_TARGET  = main
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = main
@@ -265,8 +269,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../main/ref.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../main/main.c ../main/ref.c $(DISTDIR)/
+	$(COPY_FILE) --parents ../main/chapter5.h ../main/chapter1.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../main/main.c ../main/chapter5.c ../main/chapter1.c $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -303,11 +307,15 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../main/main.c ../main/ref.h
+main.o: ../main/main.c ../main/chapter5.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o main.o ../main/main.c
 
-ref.o: ../main/ref.c ../main/ref.h
-	$(CC) -c $(CFLAGS) $(INCPATH) -o ref.o ../main/ref.c
+chapter5.o: ../main/chapter5.c ../main/chapter5.h \
+		../main/chapter1.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o chapter5.o ../main/chapter5.c
+
+chapter1.o: ../main/chapter1.c 
+	$(CC) -c $(CFLAGS) $(INCPATH) -o chapter1.o ../main/chapter1.c
 
 ####### Install
 
