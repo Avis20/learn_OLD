@@ -1,5 +1,5 @@
-
-#define MAXLINES 100
+#ifndef CHAPTER5
+#define CHAPTER5
 
 void strcpy1( char *s, char *t );
 void strcpy2( char *s, char *t );
@@ -12,10 +12,6 @@ void strcat1(char *s, char *t);
 void strcat2(char *s, char *t);
 
 int strend(char *s, char *t);
-
-int read_lines( char *lines[], int nlines );
-int write_lines( char *lines[], int nlines );
-void qsort_lines(char *lines[], int left, int right );
 
 static char daytab[2][13] = {
     {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
@@ -34,3 +30,5 @@ static char *month_names[] = {
 };
 
 char *month_name(int n);
+
+#endif
