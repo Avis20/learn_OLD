@@ -3,8 +3,48 @@
 #include "chapter5.h"
 #include "mygrep.h"
 #include "myqsort.h"
+#include "chapter6.h"
 
-///* Сортировка строк v2
+struct {
+    int len;
+    char *str;
+} str1, *p = &str1;
+
+///* Указатели на структуры
+int main (){
+
+    p->len = 6;
+    p->str = "hello";
+
+    char c;
+    while ( ( c = *p->str++ ) != '\0'){
+        printf("%c-", c );
+    }
+
+    return 0;
+}
+//*/
+
+/* Пример структур
+int main (){
+
+    struct rect screen;
+    struct point middle;
+
+    screen.pt1 = make_point(100, 200);
+    screen.pt2 = make_point(20, 10);
+    screen = canon_rect(screen);
+    struct point sum = add_point(screen.pt1, screen.pt2);
+    middle = make_point( sum.x / 2, sum.y / 2 );
+
+    print_point(middle);
+    printf("%s\n", is_in_rect(screen, middle) ? "True" : "False");
+
+    return 0;
+}
+*/
+
+/* Сортировка строк v2
 int main(int argc, char *argv[]){
 
     int n;
@@ -22,8 +62,7 @@ int main(int argc, char *argv[]){
 
     return 0;
 }
-//*/
-
+*/
 
 /* mygrep - вывод строк, содержащий образец из последнего аргумента
 int main (int argc, char *argv[]){
