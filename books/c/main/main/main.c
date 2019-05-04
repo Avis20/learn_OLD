@@ -5,12 +5,13 @@
 #include "myqsort.h"
 #include "chapter6.h"
 
-struct {
-    int len;
-    char *str;
-} str1, *p = &str1;
+int main(){
+    printf("%d\n", NKEYS);
+    count_c_words();
+    return 0;
+}
 
-///* Указатели на структуры
+/* Указатели на структуры
 int main (){
 
     p->len = 6;
@@ -23,7 +24,7 @@ int main (){
 
     return 0;
 }
-//*/
+*/
 
 /* Пример структур
 int main (){
