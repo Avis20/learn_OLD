@@ -26,5 +26,9 @@ int is_in_rect (struct rect r, struct point p);
 struct rect canon_rect(struct rect r);
 void count_c_words();
 
+struct key *binsearch( char *, struct key *, int );
+int getword(char *word, int lim);
+
+
 #endif // CHAPTER6_H
 

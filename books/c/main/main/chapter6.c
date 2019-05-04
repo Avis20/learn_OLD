@@ -55,20 +55,20 @@ struct rect canon_rect(struct rect r){
 }
 
 void count_c_words(){
-    int n;
+    struct key *p;
     char word[MAXWORD];
 
     while ( getword(word, MAXWORD) != EOF ){
         if ( isalpha(word[0]) ){
-            if ( ( n = binsearch(word, keytable, NKEYS) ) >= 0 ){
-                keytable[n].count++;
+            if ( ( p = binsearch(word, keytable, NKEYS) ) != NULL ){
+                p->count++;
             }
         }
     }
 
-    for (n = 0; n < NKEYS; n++){
-        if ( keytable[n].count > 0 ){
-            printf("%4d %s\n", keytable[n].count, keytable[n].word);
+    for ( p = keytable; p < keytable + NKEYS; p++ ){
+        if ( p->count > 0 ){
+            printf("%4d %s\n", p->count, p->word);
         }
     }
 }
@@ -80,27 +80,40 @@ int getword(char *word, int lim){
     while ( isspace( c = getchar() ) );
 
     if ( c != EOF ) *w++ = c;
+    if ( !isalpha(c) ){
+        *w = '\0';
+        return c;
+    }
+
+    for (; --lim > 0; w++){
+        if ( !isalnum(*w = getchar()) ){
+//            ungetc();
+            break;
+        }
+    }
+
     *w = '\0';
     return word[0];
 }
 
-int binsearch( char *word, struct key tab[], int n ){
-    int cond;
-    int low, high, middle;
 
-    low = 0;
-    high = n - 1;
-    while ( low <= high ){
-        middle = (low+high)/2;
-        if ( ( cond = strcmp(word, tab[middle].word) ) < 0 ){
-            high = middle - 1;
+struct key *binsearch( char *word, struct key tab[], int n ){
+    int cond;
+    struct key *low = &tab[0];
+    struct key *high = &tab[n];
+    struct key *middle;
+
+    while ( low < high ){
+        middle = low + (high - low) / 2;
+        if ( ( cond = strcmp(word, middle->word) ) < 0 ){
+            high = middle;
         } else if ( cond > 0 ){
              low = middle + 1;
         } else {
             return middle;
         }
     }
-    return -1;
+    return NULL;
 }
 
 

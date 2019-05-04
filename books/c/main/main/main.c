@@ -4,13 +4,33 @@
 #include "mygrep.h"
 #include "myqsort.h"
 #include "chapter6.h"
+#include "bintree.h"
 
+///* Программа подсчета частоты слов
+int main(){
+
+    struct tnode *root;
+    char word[MAXWORD];
+
+    root = NULL;
+    while ( getword( word, MAXWORD ) != EOF ){
+        if ( isalpha(word[0]) ){
+//            printf("%s", word);
+            root = add_tree(root, word);
+        }
+    }
+    print_tree(root);
+    return 0;
+}
+//*/
+
+/* Подсчет ключемых слов языка C; см.
 int main(){
     printf("%d\n", NKEYS);
     count_c_words();
     return 0;
 }
-
+*/
 /* Указатели на структуры
 int main (){
 

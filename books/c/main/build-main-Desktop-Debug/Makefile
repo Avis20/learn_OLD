@@ -54,14 +54,16 @@ SOURCES       = ../main/main.c \
 		../main/mygrep.c \
 		../main/myqsort.c \
 		../main/chapter4.c \
-		../main/chapter6.c 
+		../main/chapter6.c \
+		../main/bintree.c 
 OBJECTS       = main.o \
 		chapter5.o \
 		chapter1.o \
 		mygrep.o \
 		myqsort.o \
 		chapter4.o \
-		chapter6.o
+		chapter6.o \
+		bintree.o
 DIST          = ../main/mygrep.t \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -122,13 +124,15 @@ DIST          = ../main/mygrep.t \
 		../main/mygrep.h \
 		../main/myqsort.h \
 		../main/chapter4.h \
-		../main/chapter6.h ../main/main.c \
+		../main/chapter6.h \
+		../main/bintree.h ../main/main.c \
 		../main/chapter5.c \
 		../main/chapter1.c \
 		../main/mygrep.c \
 		../main/myqsort.c \
 		../main/chapter4.c \
-		../main/chapter6.c
+		../main/chapter6.c \
+		../main/bintree.c
 QMAKE_TARGET  = main
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = main
@@ -286,8 +290,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../main/chapter5.h ../main/chapter1.h ../main/mygrep.h ../main/myqsort.h ../main/chapter4.h ../main/chapter6.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../main/main.c ../main/chapter5.c ../main/chapter1.c ../main/mygrep.c ../main/myqsort.c ../main/chapter4.c ../main/chapter6.c $(DISTDIR)/
+	$(COPY_FILE) --parents ../main/chapter5.h ../main/chapter1.h ../main/mygrep.h ../main/myqsort.h ../main/chapter4.h ../main/chapter6.h ../main/bintree.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../main/main.c ../main/chapter5.c ../main/chapter1.c ../main/mygrep.c ../main/myqsort.c ../main/chapter4.c ../main/chapter6.c ../main/bintree.c $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -328,7 +332,8 @@ main.o: ../main/main.c ../main/chapter5.h \
 		../main/mygrep.h \
 		../main/chapter1.h \
 		../main/myqsort.h \
-		../main/chapter6.h
+		../main/chapter6.h \
+		../main/bintree.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o main.o ../main/main.c
 
 chapter5.o: ../main/chapter5.c ../main/chapter5.h \
@@ -351,8 +356,11 @@ myqsort.o: ../main/myqsort.c ../main/myqsort.h \
 chapter4.o: ../main/chapter4.c ../main/chapter4.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o chapter4.o ../main/chapter4.c
 
-chapter6.o: ../main/chapter6.c 
+chapter6.o: ../main/chapter6.c ../main/chapter6.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o chapter6.o ../main/chapter6.c
+
+bintree.o: ../main/bintree.c ../main/bintree.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o bintree.o ../main/bintree.c
 
 ####### Install
 
