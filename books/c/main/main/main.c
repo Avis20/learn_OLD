@@ -1,12 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "chapter1.h"
 #include "chapter5.h"
 #include "mygrep.h"
 #include "myqsort.h"
 #include "chapter6.h"
 #include "bintree.h"
 
-///* Программа подсчета частоты слов
+/* Поиск по таблице
+int main(){
+    install("test", "alarm");
+    install("test2", "alarm");
+    install("test", "2");
+    return 0;
+}
+*/
+
+/* Программа подсчета частоты слов
 int main(){
 
     struct tnode *root;
@@ -22,7 +32,7 @@ int main(){
     print_tree(root);
     return 0;
 }
-//*/
+*/
 
 /* Подсчет ключемых слов языка C; см.
 int main(){
@@ -189,5 +199,43 @@ int main(){
     }
 
     return 0;
+}
+*/
+
+/*
+int main(){
+    count_chars();
+    return 0;
+}
+*/
+
+/*
+int main(){
+    print_eof();
+    return 0;
+}
+*/
+
+/*
+int main(){
+    get_char();
+}
+*/
+
+/* 1.5
+int main(){
+    fat4();
+}
+*/
+
+/* 1.3
+int main(){
+    fat2();
+}
+*/
+
+/* Первая программа hello world
+int main(){
+    hello_world();
 }
 */

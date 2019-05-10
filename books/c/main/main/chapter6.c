@@ -5,6 +5,16 @@
 #define min(a, b) ( (a) < (b) ? (a) : (b) )
 #define max(a, b) ( (a) > (b) ? (a) : (b) )
 #define MAXWORD 100
+#define HASHSIZE 101
+
+// структура таблицы
+struct nlist {
+    struct nlist *next;
+    char *name;
+    char *defn;
+};
+
+static struct nlist *hashtab[HASHSIZE]; // таблица указателей
 
 // Массив структур
 struct key keytable[] = {
@@ -115,8 +125,53 @@ struct key *binsearch( char *word, struct key tab[], int n ){
     return NULL;
 }
 
+// Формирования хеш кода для строки
+unsigned hash(char *str){
+    unsigned hashval;
 
+    for ( hashval = 0; *str != '\0'; str++ ){
+        hashval = *str + 31 * hashval;
+    }
 
+    return hashval % HASHSIZE;
+}
+
+// поиск эл. str в таблице hashtab
+struct nlist *lookup(char *str){
+    struct nlist *p;
+
+    for ( p = hashtab[hash(str)]; p != NULL; p = p->next ){
+        if ( strcmp(str, p->name) == 0 ){
+            return p; // эл. найден
+        }
+    }
+    return NULL; // эл. не найден
+}
+
+// помещает key+value в таблицу
+struct nlist *install(char *key, char *value){
+    struct nlist *p;
+    unsigned hashval;
+
+    if ( ( p = lookup(key) ) == NULL ){ // эл. не найден
+        p = (struct nlist *) malloc(sizeof(*p));
+        if ( p == NULL || ( p->name = strdup(key) ) == NULL ){
+            return NULL;
+        }
+
+        hashval = hash(key);
+        p->next = hashtab[hashval];
+        hashtab[hashval] = p;
+    } else {
+        free( (void(*)) p->defn ); // удаление старого
+    }
+
+    if ( ( p->defn = strdup(value) ) == NULL ){
+        return NULL;
+    }
+
+    return p;
+}
 
 
 
