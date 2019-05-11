@@ -2,7 +2,7 @@
 #include <string.h>
 #include "bintree.h"
 
-struct tnode *add_tree(struct tnode *pnode, char *w){
+Treenode *add_tree(Treenode *pnode, char *w){
     int cond;
 
     if ( pnode == NULL ){
@@ -21,8 +21,8 @@ struct tnode *add_tree(struct tnode *pnode, char *w){
     return pnode;
 }
 
-struct tnode *talloc(){
-    return ( struct tnode *) malloc( sizeof(struct tnode) );
+Treenode *talloc(){
+    return ( Treenode *) malloc( sizeof(Treenode) );
 }
 
 char *strdup2(char *str){
@@ -33,7 +33,7 @@ char *strdup2(char *str){
     return p;
 }
 
-void print_tree(struct tnode *p ){
+void print_tree(Treenode *p ){
     if ( p != NULL ){
         print_tree(p->left);
         printf("%4d %s\n", p->count, p->word);

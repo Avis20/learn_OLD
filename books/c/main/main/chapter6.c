@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <malloc.h>
 #include <string.h>
+
 #include "chapter6.h"
+
 #define min(a, b) ( (a) < (b) ? (a) : (b) )
 #define max(a, b) ( (a) > (b) ? (a) : (b) )
 #define MAXWORD 100
@@ -105,7 +108,6 @@ int getword(char *word, int lim){
     return word[0];
 }
 
-
 struct key *binsearch( char *word, struct key tab[], int n ){
     int cond;
     struct key *low = &tab[0];
@@ -172,10 +174,6 @@ struct nlist *install(char *key, char *value){
 
     return p;
 }
-
-
-
-
 
 
 

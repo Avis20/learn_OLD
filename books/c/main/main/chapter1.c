@@ -46,8 +46,6 @@ void fat3(){
 
     for ( fahr = 0; fahr <= 300; fahr += 20 )
         printf("%3.0f %6.2f\n", fahr, (5.0/9.0)*(fahr-32));
-
-    return 0;
 }
 
 // Вывод таблицы температур по Фаренгейту и Цельсию; v3
@@ -56,8 +54,6 @@ void fat5(){
 
     for ( fahr = LOWER; fahr <= UPPER; fahr += STEP )
         printf("%3.0f %6.2f\n", fahr, (5.0/9.0)*(fahr-32));
-
-    return 0;
 }
 
 // Вывод таблицы температур Цельсию по Фаренгейту
@@ -131,6 +127,24 @@ void count_str(){
 }
 
 // 1.4. Напишите программу для перевода температур по Цельсию в шкалу Фаренгейта и вывода соответствующей таблицы.
+// done
+
+void cel2fat(){
+    float fahr, celsius;
+    int lower, upper, step;
+
+    lower = 0;      // нижняя граница температур
+    upper = 100;    // верняя граница температур
+    step = 20;      // величина шага
+
+    scanf("%f", &celsius);
+
+    while ( celsius <= upper ){
+        fahr = (celsius * (9.0/5.0)) + 32;
+        printf("%3.0f %6.2f\n", celsius, fahr);
+        celsius += step;
+    }
+}
 
 // 1.5. Доработайте программу преобразования температур так, чтобы она выводила таблицу в обратном порядке, т.е. от 300 градусов до нуля
 // done
@@ -181,8 +195,39 @@ void count_spaces(){
 }
 
 // 1.9. Напишите программу для копирования входного потока в выходной с заменой строки состоящей из одного или нескольких пробелов, одним пробелом
+// done
+
+void replace_spaces(){
+    int is_last_char_space = 0;
+    char c;
+    while ( (c = getchar()) != EOF ){
+        if ( c == ' ' ){
+            if ( !is_last_char_space ) putchar(' ');
+            is_last_char_space = 1;
+        } else {
+            putchar(c);
+            is_last_char_space = 0;
+        }
+    }
+}
 
 // 1.10. Напишите программу для копирования входного потока в выходной с заменой знаков табуляции \t, символа знака назад (backspace) на \b, а косую четрту на \\.
+// done
+
+void replace_symbols(){
+    char c;
+    while ( (c = getchar()) != EOF ){
+        if ( c == '\t' ){
+            printf("\\t");
+        } else if (c == '\b'){
+            printf("\\b");
+        } else if (c == '\\'){
+            printf("\\\\");
+        } else {
+            putchar(c);
+        }
+    }
+}
 
 // 1.12. Напишите программу для вывода входного потока по одному слову в строке
 

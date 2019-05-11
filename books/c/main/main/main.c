@@ -7,6 +7,20 @@
 #include "chapter6.h"
 #include "bintree.h"
 
+union myunion {
+    int integer;
+    float flot;
+} uvar;
+
+///* typedef
+int main(){
+    uvar.flot = 10.1;
+    uvar.integer = 10;
+    union myunion *ptr = &uvar;
+    printf("%d; %f\n", ptr->integer, ptr->flot);
+}
+//*/
+
 /* Поиск по таблице
 int main(){
     install("test", "alarm");
@@ -222,9 +236,27 @@ int main(){
 }
 */
 
+/* 1.10
+int main(){
+    replace_symbols();
+}
+*/
+
+/* 1.9
+int main(){
+    replace_spaces();
+}
+*/
+
 /* 1.5
 int main(){
     fat4();
+}
+*/
+
+/* 1.4
+int main(){
+    cel2fat();
 }
 */
 
