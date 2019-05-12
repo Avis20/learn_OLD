@@ -15,7 +15,8 @@ SOURCES += \
     myqsort.c \
     chapter4.c \
     chapter6.c \
-    bintree.c
+    bintree.c \
+    other.c
 
 HEADERS += \
     chapter5.h \
@@ -24,7 +25,8 @@ HEADERS += \
     myqsort.h \
     chapter4.h \
     chapter6.h \
-    bintree.h
+    bintree.h \
+    other.h
 
 DISTFILES += \
     mygrep.t

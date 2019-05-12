@@ -6,20 +6,55 @@
 #include "myqsort.h"
 #include "chapter6.h"
 #include "bintree.h"
+#include "other.h"
 
+int main(){
+
+    int arr[] = {3,7,10,32,64,120,210};
+    int arr_size = (int)(sizeof(arr)/sizeof(arr[0]));
+    printf("%d", binarySearch(arr, arr_size, 64));
+
+    return 0;
+}
+
+/*
+int main(){
+
+    int arr[] = {2,3,4,5,6,3,34,6,7,2};
+    int arr_size = (int)(sizeof(arr)/sizeof(arr[0]));
+    printf("%d", maxElement(arr, arr_size));
+
+    return 0;
+}
+*/
+
+/* fibonachi
+int main(){
+    int n = 50;
+    printf("%d; %d\n", fib1(n), fib2(n));
+    return 0;
+}
+*/
+
+/*
+int main(){
+    print_in_new_line();
+}
+*/
+
+/* union
 union myunion {
     int integer;
     float flot;
 } uvar;
 
-///* typedef
 int main(){
     uvar.flot = 10.1;
     uvar.integer = 10;
     union myunion *ptr = &uvar;
     printf("%d; %f\n", ptr->integer, ptr->flot);
 }
-//*/
+*/
 
 /* Поиск по таблице
 int main(){

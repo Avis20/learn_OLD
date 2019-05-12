@@ -3,6 +3,32 @@
 #define UPPER 300
 #define STEP 20
 
+#define IN 1
+#define OUT 0
+
+// подсчет строк, слов, и символов во входном потоке
+void count_words(){
+
+    int count_lines, count_words, count_chars, state;
+    char c;
+
+    state = OUT;
+    count_lines = count_words = count_chars = 0;
+
+    while ( (c = getchar()) != EOF ){
+        ++count_chars;
+        if ( c == '\n' ) ++count_lines;
+        if ( c == ' ' || c == '\n' || c == '\t' ){
+            state = OUT;
+        } else if ( state == OUT ){
+            state = IN;
+            ++count_words;
+        }
+    }
+
+    printf("count_lines = %d count_words = %d count_chars = %d\n", count_lines, count_words, count_chars);
+}
+
 // print hello world
 void hello_world(){
     printf("hello, world!\n");
@@ -230,6 +256,14 @@ void replace_symbols(){
 }
 
 // 1.12. Напишите программу для вывода входного потока по одному слову в строке
+
+void print_in_new_line(){
+
+    char c;
+
+    while ( (c = getchar()) != EOF )
+        if ( c != '\n' ) printf("%c\n", c);
+}
 
 // 1.13. Напишите программу для вывода гистограммы длин слов во входном потоке. Построить гистограмму с горизонтальными рядами довольно легко, а вот с вертивальными столбцами труднее.
 
