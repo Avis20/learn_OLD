@@ -1,4 +1,28 @@
 #include "other.h"
+#include <malloc.h>
+
+void CArray_add(CArray *arr, double el){
+    if ( arr->realSize == arr->bufferSize ){
+        _CArray_grow(arr);
+    }
+    arr->buffer[arr->realSize++] = el;
+}
+
+double CArray_get(CArray *arr, int index){
+    // if ( index < 0 ) return 'error'
+    return arr->buffer[index];
+}
+
+void _CArray_grow(CArray *arr){
+    int newBufferSize = max( arr->bufferSize * 2, DefaultInitialSize );
+    double *newBuffer = (double *) malloc( sizeof(double) * newBufferSize );
+    for (int i = 0; i < arr->realSize; i++){
+        newBuffer[i] = arr->buffer[i];
+    }
+    free(arr->buffer);
+    arr->buffer = newBuffer;
+    arr->bufferSize = newBufferSize;
+}
 
 /*
 f(0) = 1; f(1) = 1;
@@ -72,5 +96,5 @@ int binarySearch(int *arr, int count, int element){
         }
     }
 
-    return ( first == count || arr[first] != element ) ? -1 : firtst;
+    return ( first == count || arr[first] != element ) ? -1 : first;
 }

@@ -8,6 +8,25 @@
 #include "bintree.h"
 #include "other.h"
 
+// Динамический массив
+int main(int argc, char const *argv[]){
+    CArray arr = {0,0,0};
+    
+    // set
+    CArray_add(&arr, 10.1);
+    CArray_add(&arr, 10.2);
+    CArray_add(&arr, 10.3);
+
+    // get
+    printf("%f; %f; %f\n",
+        CArray_get(&arr, 0),
+        CArray_get(&arr, 1),
+        CArray_get(&arr, 2)
+    );
+    return 0;
+}
+
+/* Бинарный поиск
 int main(){
 
     int arr[] = {3,7,10,32,64,120,210};
@@ -16,6 +35,7 @@ int main(){
 
     return 0;
 }
+*/
 
 /*
 int main(){
