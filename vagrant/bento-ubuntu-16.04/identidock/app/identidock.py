@@ -1,11 +1,13 @@
 from flask import Flask, Response, request
 import requests
 import hashlib
+import redis
 
 app = Flask(__name__)
 
 default_name = 'Avisss'
 salt = 'SALT'
+Redis = redis.StrictRedis(host='redis', port=6379, db=0)
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
@@ -31,9 +33,13 @@ def main():
 
 @app.route('/monster/<name>')
 def get_identicon(name):
-    # return "Hello, World!\n"
-    req = requests.get('http://dnmonster:8080/monster/' + name + '?size=80')
-    image = req.content
+    image = Redis.get(name)
+    if image is None:
+        print("Cache miss", flush=True)
+        req = requests.get('http://dnmonster:8080/monster/' + name + '?size=80')
+        image = req.content
+        Redis.set(name, image)
+
     return Response(image, mimetype='image/png')
 
 # def hello_world():

@@ -9,9 +9,10 @@ identidock:
     - ./app:/app
   links:
     - dnmonster
+    - redis
 
 dnmonster:
   image: amouat/dnmonster
 
-
-# $ docker run --rm -p 80:5000 -e "RUN=DEV" -v "$(pwd)"/app:/app --name identidock --link dnmonster:dnmonster identidock 
+redis:
+  image: redis
