@@ -7,3 +7,11 @@ identidock:
     RUN: DEV
   volumes:
     - ./app:/app
+  links:
+    - dnmonster
+
+dnmonster:
+  image: amouat/dnmonster
+
+
+# $ docker run --rm -p 80:5000 -e "RUN=DEV" -v "$(pwd)"/app:/app --name identidock --link dnmonster:dnmonster identidock 

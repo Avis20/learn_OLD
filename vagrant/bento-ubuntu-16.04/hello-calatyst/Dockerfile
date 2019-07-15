@@ -19,4 +19,5 @@ copy MyApp /MyApp
 # user catalyst
 expose 3000
 
-cmd ["perl", "/MyApp/script/myapp_server.pl"]
+cmd perl /MyApp/script/myapp_server.pl -rd -p 3001
+# cmd ["perl", "/MyApp/script/myapp_server.pl"]
