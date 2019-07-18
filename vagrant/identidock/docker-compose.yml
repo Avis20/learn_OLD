@@ -1,8 +1,8 @@
 identidock:
   build: .
   ports:
-    - "80:9090"
-    - "81:5000"
+    # - "80:9090"
+    - "80:5000"
   environment:
     RUN: DEV
   volumes:
