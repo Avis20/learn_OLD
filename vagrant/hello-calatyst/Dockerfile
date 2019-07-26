@@ -1,5 +1,5 @@
 # from perl:5.30
-from debian
+from debian:stretch-slim
 
 run groupadd -r catalyst && useradd -r -g catalyst catalyst
 
