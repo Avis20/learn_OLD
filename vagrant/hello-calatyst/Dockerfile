@@ -1,7 +1,7 @@
 # from perl:5.30
 from debian:stretch-slim
 
-run groupadd -r catalyst && useradd -r -g catalyst catalyst
+# run groupadd -r catalyst && useradd -r -g catalyst catalyst
 
 run apt-get update && apt-get install -y \
         libcatalyst-perl \
