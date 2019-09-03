@@ -1,5 +1,3 @@
-
-
 docker run -d --name cadvisor \
 -v /:/rootfs:ro \
 -v /var/run:/var/run:rw \
