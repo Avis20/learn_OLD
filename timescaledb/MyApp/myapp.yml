@@ -4,9 +4,12 @@ test: 1
 
 Model::TestDB:
     connect_info:
-    - dbi:Pg:dbname=timescaledb_test;host=localhost;port=5432;application_name=fonmix
-    - postgres
-    - '1234'
+    # - dbi:Pg:dbname=timescaledb_test;host=localhost;port=5432;application_name=fonmix
+    # - postgres
+    # - '1234'
+    - dbi:Pg:dbname=test_db;host=tsdb-2468e8cb-orlov-a36f.a.timescaledb.io;port=26913;application_name=test
+    - tsdbadmin
+    - ai73v2ey3mqtgmwh
     -   AutoCommit: 1
         disable_sth_caching: 1
         name_sep: .

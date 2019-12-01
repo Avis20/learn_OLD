@@ -1,5 +1,20 @@
 #!/usr/bin/env bash
 
+
+########### 
+##### NEW
+
+
+siege -b -c50 -t60S \
+-v --mark="50 rps" -lmy.txt \
+'http://localhost:3000/monitor/player POST play_status=1&play_status_code=player is paused&cache_status=2&ip_address=26.45.167.191:8081&real_ip=79.98.212.82&local_time=1564469397125&os_info=windows 1010.0&real_timezone=Europe/Moscow&real_timezone_offset=3:00&request_time=1564469398&up_time=4 дн. назад&version=windows 1010.0_3.0.1.81&cache_allocated_size=138191&cache_available_size=138191&cache_errcode=2&cache_errmess=Все подборки скачаны в кеш.&cache_free_disk_size=124864&cache_free_size=114808&cache_total_track_downloaded_size=23382&cache_total_track_size=23382&cache_used_size=23451&current_playlist=Звуки Природы&current_playlist_id=2097&current_second=556&current_singer=Nature Sound Series&current_track=Mountain Brook Soundscape Bedtime Music For Baby Sleep, Natural Stress Relief&current_track_id=585ce146-0000-0019-0000-0000f496cb37&geoip_timezone=Europe/Moscow&geoip_timezone_offset=3&last_err_code=-2&last_err_message=1&last_err_time=2019-07-30T07:56:48' \
+-H 'X-Player-Device-Key: d2d22fe64ed635c' \
+-H 'X-Player-Secret-Key: 56813eb4-9d21-d0ab-05cd-636005cd6334' \
+-H 'X-Player-Version: test-044';
+
+
+
+
 # qa2.fonmix
 
 
@@ -132,12 +147,12 @@
 ###########
 ## TimescaleDB
 
-siege -b -c250 -r1000 \
--v --mark="250 rps" -lpostgres2.log \
-'http://orlov.qa2.fonmix.ru/monitor3/player POST play_status=1&play_status_code=player is paused&cache_status=2&ip_address=26.45.167.191:8081&real_ip=79.98.212.82&local_time=1564469397125&os_info=windows 1010.0&real_timezone=Europe/Moscow&real_timezone_offset=3:00&request_time=1564469398&up_time=4 дн. назад&version=windows 1010.0_3.0.1.81&cache_allocated_size=138191&cache_available_size=138191&cache_errcode=2&cache_errmess=Все подборки скачаны в кеш.&cache_free_disk_size=124864&cache_free_size=114808&cache_total_track_downloaded_size=23382&cache_total_track_size=23382&cache_used_size=23451&current_playlist=Звуки Природы&current_playlist_id=2097&current_second=556&current_singer=Nature Sound Series&current_track=Mountain Brook Soundscape Bedtime Music For Baby Sleep, Natural Stress Relief&current_track_id=585ce146-0000-0019-0000-0000f496cb37&geoip_timezone=Europe/Moscow&geoip_timezone_offset=3&last_err_code=-2&last_err_message=1&last_err_time=2019-07-30T07:56:48' \
--H 'X-Player-Device-Key: d2d22fe64ed635c' \
--H 'X-Player-Secret-Key: 56813eb4-9d21-d0ab-05cd-636005cd6334' \
--H 'X-Player-Version: test-044';
+# siege -b -c250 -r1000 \
+# -v --mark="250 rps" -lpostgres2.log \
+# 'http://orlov.qa2.fonmix.ru/monitor3/player POST play_status=1&play_status_code=player is paused&cache_status=2&ip_address=26.45.167.191:8081&real_ip=79.98.212.82&local_time=1564469397125&os_info=windows 1010.0&real_timezone=Europe/Moscow&real_timezone_offset=3:00&request_time=1564469398&up_time=4 дн. назад&version=windows 1010.0_3.0.1.81&cache_allocated_size=138191&cache_available_size=138191&cache_errcode=2&cache_errmess=Все подборки скачаны в кеш.&cache_free_disk_size=124864&cache_free_size=114808&cache_total_track_downloaded_size=23382&cache_total_track_size=23382&cache_used_size=23451&current_playlist=Звуки Природы&current_playlist_id=2097&current_second=556&current_singer=Nature Sound Series&current_track=Mountain Brook Soundscape Bedtime Music For Baby Sleep, Natural Stress Relief&current_track_id=585ce146-0000-0019-0000-0000f496cb37&geoip_timezone=Europe/Moscow&geoip_timezone_offset=3&last_err_code=-2&last_err_message=1&last_err_time=2019-07-30T07:56:48' \
+# -H 'X-Player-Device-Key: d2d22fe64ed635c' \
+# -H 'X-Player-Secret-Key: 56813eb4-9d21-d0ab-05cd-636005cd6334' \
+# -H 'X-Player-Version: test-044';
 
 
 

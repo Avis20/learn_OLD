@@ -27,22 +27,7 @@ __PACKAGE__->add_columns(
             data_type           => 'text',
             is_nullable         => 1,
         },
-    'ip_address',
-        {
-            data_type           => 'text',
-            is_nullable         => 1,
-        },
     'request_time',
-        {
-            data_type           => 'integer',
-            is_nullable         => 1,
-        },
-    'request_time',
-        {
-            data_type           => 'integer',
-            is_nullable         => 1,
-        },
-    'local_time',
         {
             data_type           => 'integer',
             is_nullable         => 1,
