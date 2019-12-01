@@ -18,7 +18,7 @@ sub monitor :Path('monitor/player') :Args(0) {
     $params->{'app_version'}    = $c->req->header('X-Player-Version');
     $params->{'real_ip'}        = $c->req->headers->header('x-real-ip');
     $params->{'request_time'}   = time;
-    $params->{'json_data'}      = encode( 'utf-8', encode_json($c->req->params()) );
+    $params->{'json_data'}      = decode( 'utf-8', encode_json($c->req->params()) );
     warn "\n\n";
     warn dumper $params;
     warn "\n\n";

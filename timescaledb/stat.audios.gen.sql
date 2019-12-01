@@ -1,6 +1,11 @@
 
 
+select date_trunc('month', ts_playing) as month, count(*) from stat.audios
+group by month order by month
 
+
+select * from stat.audios where date_trunc('month', ts_playing) = '2019-02-01';
+delete from stat.audios where date_trunc('month', ts_playing) = '2019-02-01';
 
 
 select count(*) from stat.audios;
@@ -11,7 +16,7 @@ explain analyze
 SELECT count( distinct(filial_id) ) FROM stat.audios;
 
 explain analyze
-SELECT count(*) FROM stat.audios2
+SELECT count(*) FROM stat.audios
 WHERE date_trunc('month', ts_playing)::date = '2019-11-01'
 
 /*
@@ -34,16 +39,18 @@ insert into stat.audios (audio_id, filial_id, ts_playing, count_chunks, is_annou
 select
     uuid_in(md5(random()::text || clock_timestamp()::text)::cstring) as audio_id,
     round( random() * 300 ) as filial_id,
-    timestamp '2019-11-28T09:00:00' + random() * (timestamp '2019-10-28T00:00:00' - timestamp '2019-11-28T23:00:00') as ts_playing,
+    timestamp '2019-01-01T00:00:00' + random() * (timestamp '2019-01-01T00:00:00' - timestamp '2019-02-01T00:00:00') as ts_playing,
     round( random() * 50 ) as count_chunks,
     (case when random() > 0.4 THEN true else false end) as is_announce,
     ARRAY[10000, 10000, 10000, 10000] as list_stat_files,
     (case when random() > 0.4 THEN true else false end) as is_ts_playing_corrected,
     round( random() * 10 ) as content_subtype_id
-from generate_series(0, 2000000);
+from generate_series(0, 100 000);
 
-SELECT count(filial_id) FROM stat.audios
-WHERE date_trunc('month', ts_playing)::date = '2019-10-01'
+Query OK, 100001 rows affected (execution time: 15,689 sec; total time: 15,708 sec)
+
+-- SELECT count(filial_id) FROM stat.audios
+-- WHERE date_trunc('month', ts_playing)::date = '2019-10-01'
 
 
 --GROUP BY filial_id
