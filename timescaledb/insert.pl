@@ -10,13 +10,16 @@ my $dbh = DBI->connect(
     'dbi:Pg:dbname=fonmix_qa2;host=localhost;port=6432;application_name=fonmix', 'fonmix', 'FM3yaRBY15bV'
 );
 
+my $table = 'stat.audios';
+# my $table = 'stat.audios_hyper'; # 'stat.audios';
+
 foreach my $date (3..8){
 
     my $date_start = '2019-0'.$date.'-01';
     my $date_end = '2019-0'.($date+1).'-01';
 
     my $sql = "
-insert into stat.audios (audio_id, filial_id, ts_playing, count_chunks, is_announce, list_stat_files, is_ts_playing_corrected, content_subtype_id)
+insert into ".$table." (audio_id, filial_id, ts_playing, count_chunks, is_announce, list_stat_files, is_ts_playing_corrected, content_subtype_id)
 select
     uuid_in(md5(random()::text || clock_timestamp()::text)::cstring) as audio_id,
     round( random() * 3000 ) as filial_id,
