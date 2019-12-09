@@ -5,7 +5,7 @@ group by month order by month
 
 SELECT date_trunc('month', ts_playing) as month, COUNT(*) FROM stat.audios
 GROUP BY month ORDER BY month
-LIMIT 5;
+LIMIT 50;
 
 select * from stat.audios where date_trunc('month', ts_playing) = '2019-02-01';
 delete from stat.audios where date_trunc('month', ts_playing) = '2019-02-01';
@@ -20,9 +20,6 @@ select * from
 ( select count(*) from stat.audio_scope ) a,
 ( select pg_size_pretty(pg_table_size('stat.audio_scope')) as table_size ) b,
 ( select pg_size_pretty(pg_indexes_size('stat.audio_scope')) as index_size ) c;
-
-
-
 
 
 explain analyze
