@@ -35,6 +35,7 @@ CREATE INDEX "audios_idx_fm-35002" ON stat.audios_hyper USING btree (((date_trun
 CREATE UNIQUE INDEX ts_playing_audio_id_filial_id_uniq2 ON stat.audios_hyper USING btree (ts_playing, audio_id, filial_id);
 
 CREATE UNIQUE INDEX audios_hyper_idx ON stat.audios_hyper USING btree (audio_id, filial_id, ts_playing);
+
 SELECT create_hypertable('stat.audios_hyper', 'ts_playing', chunk_time_interval => interval '1 month');
 
 insert into stat.audios_hyper (audio_id, filial_id, ts_playing, count_chunks, is_announce, list_stat_files, is_ts_playing_corrected, content_subtype_id)
