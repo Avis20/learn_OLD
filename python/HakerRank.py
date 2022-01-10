@@ -1,4 +1,151 @@
 
+
+
+
+
+
+
+'''
+# n = input()
+n = 2
+
+if n % 2 != 0 or (n >= 6 and n <= 20):
+    print('Weird')
+elif n >= 2 and n <= 5 or n > 20:
+    print('Not Weird')
+'''
+
+
+
+'''
+def solve(meal_cost, tip_percent, tax_percent):
+    tip = (meal_cost * tip_percent) / 100
+    tax = (meal_cost * tax_percent) / 100
+    total_cost = meal_cost + tip + tax
+    return round(total_cost)
+
+if __name__ == '__main__':
+    meal_cost = float(input().strip())
+    tip_percent = int(input().strip())
+    tax_percent = int(input().strip())
+    
+    # meal_cost = 12.0
+    # tip_percent = 20
+    # tax_percent = 8
+    
+    result = solve(meal_cost, tip_percent, tax_percent)
+    print(result)
+'''
+
+
+'''
+from collections import defaultdict
+
+DEBUG = 1
+
+ddict = defaultdict(list)
+
+if DEBUG:
+    n, m = (5, 3)
+else:
+    n, m = map(int, input().split())
+
+arr_a = ['a', 'a', 'b', 'a', 'b']
+arr_b = ['a', 'b', 'c']
+
+for i in range(n):
+    if DEBUG:
+        c = arr_a[i]
+    else:
+        c = input()
+    ddict[c].append(str(i+1))
+
+for i in range(m):
+    if DEBUG:
+        c = arr_b[i]
+    else:
+        c = input()
+
+    if not ddict[c]:
+        print(-1)
+        continue
+    print(" ".join(ddict[c]))
+'''
+
+
+'''
+from collections import defaultdict
+
+ddict = defaultdict(list)
+
+# n - кол-во букв в массиве A - список исходных букв
+# m - кол-во букв в массиве B - буквы индексы которых нужно вывести
+# (n, m) = map(int, input().split())
+
+(n, m) = (5, 3)
+arr_a = ['a', 'a', 'b', 'a', 'b']
+arr_b = ['a', 'b', 'c']
+
+for i in range(n):
+    # c = input()
+    c = arr_a[i]
+    ddict[c].append(i + 1)
+
+for i in range(m):
+    # c = input()
+    c = arr_b[i]
+    if not ddict[c]:
+        print(-1)
+    else:
+        print(" ".join(map(str, ddict[c])))
+
+
+# >>> 1 2 4
+# >>> 3 5
+# >>> -1
+
+'''
+
+'''
+from collections import defaultdict
+
+d = defaultdict(list)
+d['python'].append('awesome')
+d['some-else'].append('another value')
+d['python'].append('programming language')
+for k, v in d.items():
+    print("Key:", k, "; Value", v)
+
+# >>> Key: python ; Value ['awesome', 'programming language']
+# >>> Key: some-else ; Value ['another value']
+'''
+
+"""
+for _ in range(int(input())):
+    try:
+        a, b = map(int, input().split())
+        print(a // b)
+    except Exception as e:
+        print("Error Code:", e)
+
+"""
+
+
+# res = calendar.weekday(y, m, d).strftime("%A")
+# print(res)
+
+"""
+# https://www.hackerrank.com/challenges/calendar-module/forum
+import calendar
+
+WEEK_DAYS = ('MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY')
+(month, day, year) = map(int, input().split())
+print(WEEK_DAYS[calendar.weekday(year, month, day)])
+"""
+
+
+# print(calendar.weekday(2021, 12, 5).weekday())
+
 """
 from collections import namedtuple
 

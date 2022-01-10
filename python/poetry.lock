@@ -1,0 +1,17 @@
+[[package]]
+name = "time-uuid"
+version = "0.2.0"
+description = "A sensible class for dealing with UUIDv1"
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "28d61e45170106d3adfe5f831d2606b187c09a09e382eafcfe5fca15a07efbdf"
+
+[metadata.files]
+time-uuid = [
+    {file = "time-uuid-0.2.0.tar.gz", hash = "sha256:1737c510a2db5dee5848a4855ca18562591915be0cbf6f4f9c31e03a4a57060d"},
+]

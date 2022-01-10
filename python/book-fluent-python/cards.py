@@ -42,3 +42,18 @@ print(choice(deck))
 print(deck[12::13])
 # >>> [Card(rank='Т', suit='трефы'), Card(rank='Т', suit='бубны'), Card(rank='Т', suit='червы'), Card(rank='Т', suit='пики')]
 
+
+# Сортировка 
+suit_values = {"пики": 3, "червы": 2, "трефы": 1, "бубны": 0}
+
+
+def spades_high(card):
+    rank_value = FrenchDeck.ranks.index(card.rank)
+    result = rank_value * len(suit_values) + suit_values[card.suit]
+    print("card", card, "rank_value", rank_value, "result", result)
+    return result
+
+
+print("Вывод списка карт с кастомной сортировкой: тузы старшие, пики, червы, трефы, бубны")
+for card in sorted(deck, key=spades_high):
+    print(card)
