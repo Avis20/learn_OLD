@@ -7,7 +7,7 @@ authors = ["Орлов Ярослав <y.orlov@fonmix.ru>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 beautifulsoup4 = "4.9.3"
-certifi = "2020.12.5"
+certifi = "2022.12.7"
 chardet = "4.0.0"
 idna = "2.10"
 requests = "2.25.1"
